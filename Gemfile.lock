@@ -49,6 +49,9 @@ GEM
     byebug (10.0.2)
     concurrent-ruby (1.0.5)
     crass (1.0.4)
+    date_validator (0.9.0)
+      activemodel
+      activesupport
     diff-lcs (1.3)
     erubi (1.7.1)
     factory_bot (4.11.0)
@@ -158,6 +161,7 @@ PLATFORMS
 DEPENDENCIES
   bootsnap (>= 1.1.0)
   byebug
+  date_validator
   factory_bot_rails
   listen (>= 3.0.5, < 3.2)
   pg (>= 0.18, < 2.0)
