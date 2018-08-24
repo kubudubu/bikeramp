@@ -1,9 +1,9 @@
 class Api::Stats::StatsController < ApplicationController
   def monthly
-    respond({method: :monthly})
+    respond(TripsMonthlyPresenter.new({}))
   end
 
   def weekly
-    respond({method: :weekly})
+    respond(TripsWeeklyPresenter.new({}))
   end
 end
