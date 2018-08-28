@@ -35,7 +35,7 @@ The above command returns JSON structured like this:
 
 This endpoint retrieves summary of ride distances from current month, grouped by day. The summary should include sum of all rides distances from given day, average ride distance and average price for the ride.
 
-Request: `GET <host>api/stats/monthly`
+Request: `GET <host>/api/stats/monthly`
 
 The above command returns JSON structured like this:
 ```
