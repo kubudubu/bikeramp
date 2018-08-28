@@ -1,8 +1,8 @@
 class TripsWeeklyPresenter < BasePresenter
   def as_json(*)
     {
-      total_distance: 1,
-      total_price: 2
+      total_distance: parse_distance(@object.try(:total_distance)),
+      total_price: parse_price(@object.try(:total_price))
     }
   end
 end
