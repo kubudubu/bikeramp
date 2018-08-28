@@ -1,24 +1,57 @@
-# README
+# Bikeramp
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## Trips
 
-Things you may want to cover:
+### Create Trip
+This endpoint logs the trip and automatically calculates the distance between start and destination addresses.
 
-* Ruby version
+Request: `POST <host>/api/trips`
 
-* System dependencies
+Request Parameters
+```
+start_address: Start address in format: "Plac Europejski 2, Warszawa, Polska"
+destination_address: Destination address in format: "Plac Europejski 2, Warszawa, Polska"
+price: Package price in PLN
+date: Date of delivery
+```
 
-* Configuration
+## Stats
 
-* Database creation
+### Get Weekly Stats
 
-* Database initialization
+This endpoint retrieves how many kilometers did courier rode during current week and how much money he received on the rides.
 
-* How to run the test suite
+Request: `GET <host>/api/stats/weekly`
 
-* Services (job queues, cache servers, search engines, etc.)
+The above command returns JSON structured like this:
+```
+{
+  "total_distance": "40km",
+  "total_price":    "49.75PLN"
+}
+```
 
-* Deployment instructions
+### Get Monthly Stats
 
-* ...
+This endpoint retrieves summary of ride distances from current month, grouped by day. The summary should include sum of all rides distances from given day, average ride distance and average price for the ride.
+
+Request: `GET <host>api/stats/monthly`
+
+The above command returns JSON structured like this:
+```
+[
+  {
+    "day":            "July, 4th",
+    "total_distance": "12km",
+    "avg_ride":       "4km",
+    "avg_price":      "22.75PLN"
+  },
+  {
+    "day":            "July, 5th",
+    "total_distance": "3km",
+    "avg_ride":       "3km",
+    "avg_price":      "15.5PLN"
+  }
+]
+```
+
