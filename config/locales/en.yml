@@ -2,5 +2,8 @@ en:
   hello: "Hello world"
   errors:
     validations:
-      address_invalid: "Address is not valid: %{field} "
-
+      address_invalid: "Address is not valid: %{field}"
+      address_blank: "Address does not exist"
+    handlers:
+      cannot_handle_base_error: "Cannot handle error"
+      route_not_found: "Route not found"

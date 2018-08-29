@@ -1,0 +1,2 @@
+class RouteNotFoundError < StandardError
+end

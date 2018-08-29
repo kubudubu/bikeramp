@@ -7,4 +7,6 @@ Rails.application.routes.draw do
       get :monthly, to: 'stats#monthly'
     end
   end
+
+  match '*unknown_route', :to => 'application#handle_routing_error', :via => :all
 end
