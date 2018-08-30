@@ -13,6 +13,7 @@
 # it.
 #
 # See http://rubydoc.info/gems/rspec-core/RSpec/Core/Configuration
+require 'vcr'
 RSpec.configure do |config|
   # rspec-expectations config goes here. You can use an alternate
   # assertion/expectation library such as wrong or the stdlib/minitest
@@ -26,6 +27,23 @@ RSpec.configure do |config|
     # ...rather than:
     #     # => "be bigger than 2"
     expectations.include_chain_clauses_in_custom_matcher_descriptions = true
+  end
+
+  config.around(:each) do |test|
+    options = test.metadata[:vcr] || {}
+    if options[:record] == :skip
+      VCR.turned_off(&test)
+    else
+      options[:record] = :new_episodes
+      name = test.metadata[:full_description].split(/\s+/, 2).join('/').underscore.gsub(/\./,'/').gsub(/[^\w\/]+/, '_').gsub(/\/$/, '')
+      VCR.use_cassette(name, options, &test)
+    end
+  end
+
+  VCR.configure do |c|
+    c.cassette_library_dir = 'spec/fixtures/vcr_cassettes'
+    c.allow_http_connections_when_no_cassette = true
+    c.hook_into :webmock
   end
 
   # rspec-mocks config goes here. You can use an alternate test double
