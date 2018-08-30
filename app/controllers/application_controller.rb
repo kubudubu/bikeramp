@@ -2,7 +2,7 @@ class ApplicationController < ActionController::API
   rescue_from StandardError, with: :handle_error
 
   def handle_error(exception)
-    result = error_handler.handle(exception)
+    result = ErrorHandler.handle(exception)
     respond result.errors, result.status
   end
 
@@ -12,11 +12,5 @@ class ApplicationController < ActionController::API
 
   def respond(object, status = :ok)
     render json: object, status: status
-  end
-
-  private
-
-  def error_handler
-    @error_handler ||= ErrorHandler.new
   end
 end
