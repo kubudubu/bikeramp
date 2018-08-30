@@ -19,6 +19,5 @@ module ErrorHandler
     def default_handler(exception)
       GenericErrorHandler.new(exception)
     end
-
   end
 end
