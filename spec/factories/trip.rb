@@ -4,6 +4,6 @@ FactoryBot.define do
     destination_address { "Mazowiecka 10, Warszawa, Polska" }
     price { 2.0 }
     distance { 10 }
-    date { "2018-01-01" }
+    date { Date.today }
   end
 end

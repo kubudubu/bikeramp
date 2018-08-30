@@ -12,7 +12,7 @@ class BasePresenter
   end
 
   def parse_distance(distance)
-    "#{distance ? distance.round(3) : 0}km"
+    "#{distance ? distance.round(0) : 0}km"
   end
 
 end
