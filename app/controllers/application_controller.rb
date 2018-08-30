@@ -17,6 +17,6 @@ class ApplicationController < ActionController::API
   private
 
   def error_handler
-    @error_handler ||= ErrorHandlingService.new
+    @error_handler ||= ErrorHandler.new
   end
 end

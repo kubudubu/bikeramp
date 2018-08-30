@@ -1,4 +1,4 @@
-class ErrorHandlingService
+class ErrorHandler
   attr_reader :error_handlers
 
   def initialize

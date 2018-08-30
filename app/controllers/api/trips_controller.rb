@@ -1,6 +1,6 @@
 class Api::TripsController < ApplicationController
   def create
-    TripService.create(trip_params)
+    Trip::Create.call(trip_params)
     head :no_content
   end
 
