@@ -6,7 +6,7 @@ describe Api::TripsController, type: :request do
     context "when params are valid" do
       subject { post api_trips_path, params: attributes_for(:trip) }
 
-      include_examples :returns_status_code, 204 do
+      include_examples :has_status_code, 204 do
         let(:request) { subject }
       end
 
@@ -14,16 +14,15 @@ describe Api::TripsController, type: :request do
         let(:request) { subject }
       end
 
-      it "returns empty body" do
-        subject
-        expect(controller.response.body).to eq("")
+      include_examples :has_empty_response_body do
+        let(:request) { subject }
       end
     end
 
     context "when params are invalid" do
       subject { post api_trips_path, params: {} }
 
-      include_examples :returns_status_code, 422 do
+      include_examples :has_status_code, 422 do
         let(:request) { subject }
       end
 
@@ -31,8 +30,9 @@ describe Api::TripsController, type: :request do
         let(:request) { subject }
       end
 
-      include_examples :has_error_messages do
+      include_examples :has_response_as_fields do
         let(:request) { subject }
+        let(:expected_fields) { %w(errors) }
       end
     end
   end
