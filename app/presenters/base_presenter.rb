@@ -1,6 +1,9 @@
 class BasePresenter
-  def initialize(object)
+  UNITS = { km: 1, m: 1000 }
+
+  def initialize(object, unit)
     @object = object
+    @unit = unit || "km"
   end
 
   def parse_date(date)
@@ -12,7 +15,8 @@ class BasePresenter
   end
 
   def parse_distance(distance)
-    "#{distance ? distance.round(0) : 0}km"
+    result = distance * UNITS[@unit.to_sym]
+    "#{result&.round(0).to_i}#{@unit}"
   end
 
 end

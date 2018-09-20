@@ -17,8 +17,8 @@ describe Trip, type: :model do
     end
 
     context "when date is invalid" do
-      include_examples :is_not_date, :trip, :date
-      include_examples :is_not_nil, :trip, :date
+      it_behaves_like :is_not_date, :trip, :date
+      it_behaves_like :is_not_nil, :trip, :date
     end
 
     context "when start_address is invalid" do
